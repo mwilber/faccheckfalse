@@ -4,3 +4,4 @@ import './components/gz-core/gz-back/gz-back';
 import './components/gz-core/gz-label/gz-label';
 import './components/gz-core/gz-bind/gz-bind';
 import './components/gz-core/gz-toggle/gz-toggle';
+import './components/gz-core/gz-nav/gz-nav';
