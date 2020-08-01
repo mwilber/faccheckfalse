@@ -1,8 +1,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const webpackConfig = require('./webpack.config.common');
+const webpackConfig = require('./webpack.config');
 
 const dirAssets = path.join(__dirname, 'assets');
 const webManifest = path.join(__dirname, 'manifest.json');

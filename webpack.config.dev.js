@@ -1,11 +1,11 @@
 const merge = require('webpack-merge');
-const webpackConfig = require('./webpack.config.common');
+const webpackConfig = require('./webpack.config');
 
 module.exports = merge(webpackConfig, {
 
     mode: 'development',
-
-    devtool: 'source-map',
+    //devtool: false,
+    devtool: 'eval-source-map',
 
     output: {
         pathinfo: true,

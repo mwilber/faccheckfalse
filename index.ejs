@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title><%= htmlWebpackPlugin.options.data.title %></title>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.data.title %></title>
 	<meta name="description" content="<%= htmlWebpackPlugin.options.data.description %>">
 	<meta name="author" content="<%= htmlWebpackPlugin.options.data.author %>">
 	<meta property="og:title" content="<%= htmlWebpackPlugin.options.data.title %>" />
@@ -49,10 +49,12 @@
 
 </head>
 <body>
-    <div class="container">
-		<img id="logo" src="assets/images/logo.svg"/>
-		<br/>
-		<h1><%= htmlWebpackPlugin.options.data.title %></h1>
+  <div class="container">
+		<gz-if dataBind="state.activeList" bind-child="byref">
+			<div slot="then">
+				<list-checkout dataBind=""></list-checkout>
+			</div>
+		</gz-if>
 	</div>
 	
 </body>

@@ -11,8 +11,19 @@
  * check out the GreenZeta 10 minute PWA example at https://github.com/mwilber/gz-10-minute-pwa
  */ 
 import '../app-shell.css';
-import './serviceWorkerRegistration';
+//import './serviceWorkerRegistration';
 
 // Load application styles
-import '../styles/main.scss';
+//import '../styles/main.scss';
 
+import { GzDataStore } from './GzDataStore';
+
+let dataStore = new GzDataStore('listimate', {
+	lists: [],
+	state: {
+			activeList: "",
+			activeItem: ""
+	}
+});
+
+window['dataStore'] = dataStore;
