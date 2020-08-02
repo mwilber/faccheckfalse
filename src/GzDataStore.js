@@ -27,6 +27,10 @@ export class GzDataStore{
         document.addEventListener('GzDataUpdate', function(evt){
             try{
                 if(evt.detail.target === '.'){
+                    // Setting target to null here because we're replacing the entire 
+                    // dataStore. Null target will trigger all registered components 
+                    // to re-render.
+                    evt.detail.target = null;
                     this.dataStore = evt.detail.payload;
                 }else{
                     let targetPath = evt.detail.target.split('.');
