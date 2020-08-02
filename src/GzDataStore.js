@@ -1,10 +1,10 @@
 export class GzDataStore{
-    constructor(storeName, storeDefault){
+    constructor(storeName, storeDefault, persistLocalStorage){
         this.bindings = new Map();
         this.dataStoreName = storeName;
         this.dataStore = storeDefault;
         // Restore from localStorage
-        if(window.localStorage){
+        if(persistLocalStorage && window.localStorage){
             let storedData = window.localStorage.getItem(storeName);
             if(storedData) storedData = JSON.parse(storedData);
             if(storedData) this.dataStore = storedData;
