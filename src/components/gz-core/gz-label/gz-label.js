@@ -12,9 +12,10 @@ window.customElements.define('gz-label', class extends GzDataElement {
     }
     
     render(){
+      console.log('gz-label', this._dataSet);
       if(this._dataSet){
         this.shadowRoot.innerHTML = `
-          ${this._dataSet.name}
+          ${this._dataSet}
         `;
       }else{
         this.shadowRoot.innerHTML = `

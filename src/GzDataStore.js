@@ -26,27 +26,31 @@ export class GzDataStore{
 
         document.addEventListener('GzDataUpdate', function(evt){
             try{
-                let targetPath = evt.detail.target.split('.');
-                let targetRef = this.dataStore;
-                // Get a reference var to the parent of the target
-                for(let idx=0; idx<(targetPath.length-1); idx++){
-
-                    let arrCk = targetPath[idx].match(/([^\[]+)\[([^\]]+)/);
-                    if(arrCk){
-                        targetRef = targetRef[arrCk[1]][arrCk[2]];
-                    }else{
-                        targetRef = targetRef[targetPath[idx]];
-                    }
-
-                    
-                }
-                // Replace the target with the payload
-                let finalPath = targetPath[targetPath.length-1];
-                let arrCk = finalPath.match(/([^\[]+)\[([^\]]+)/);
-                if(arrCk){
-                    targetRef[arrCk[1]][arrCk[2]] = evt.detail.payload;;
+                if(evt.detail.target === '.'){
+                    this.dataStore = evt.detail.payload;
                 }else{
-                    targetRef[finalPath] = evt.detail.payload;;
+                    let targetPath = evt.detail.target.split('.');
+                    let targetRef = this.dataStore;
+                    // Get a reference var to the parent of the target
+                    for(let idx=0; idx<(targetPath.length-1); idx++){
+
+                        let arrCk = targetPath[idx].match(/([^\[]+)\[([^\]]+)/);
+                        if(arrCk){
+                            targetRef = targetRef[arrCk[1]][arrCk[2]];
+                        }else{
+                            targetRef = targetRef[targetPath[idx]];
+                        }
+
+                        
+                    }
+                    // Replace the target with the payload
+                    let finalPath = targetPath[targetPath.length-1];
+                    let arrCk = finalPath.match(/([^\[]+)\[([^\]]+)/);
+                    if(arrCk){
+                        targetRef[arrCk[1]][arrCk[2]] = evt.detail.payload;;
+                    }else{
+                        targetRef[finalPath] = evt.detail.payload;;
+                    }
                 }
                 
                 this._commitData(evt.detail.target);
@@ -63,7 +67,7 @@ export class GzDataStore{
     }
 
     _commitData(refreshTarget){
-        console.log('GZDataStore');
+        //console.log('GZDataStore');
         if(window.localStorage) window.localStorage.setItem(this.dataStoreName, JSON.stringify(this.dataStore));
 
         this._refresh(refreshTarget);

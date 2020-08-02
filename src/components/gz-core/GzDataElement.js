@@ -32,6 +32,7 @@ export class GzDataElement extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
       if(name == 'databind'){
+        console.log('GzDataElement', 'calling databind');
         document.dispatchEvent(new CustomEvent('GzDataBind', {
           detail:{
               node: this,

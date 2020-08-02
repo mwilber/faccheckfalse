@@ -18,12 +18,15 @@ import '../app-shell.css';
 
 import { GzDataStore } from './GzDataStore';
 
-let dataStore = new GzDataStore('listimate', {
-	lists: [],
-	state: {
-			activeList: "",
-			activeItem: ""
-	}
+let dataStore = new GzDataStore('faccheckfalse', {
+	// questions: [],
+	// players: {
+	// },
+	// state: {
+	// 	responses: {
+	// 	},
+	// 	navigation: 'home'
+	// }
 });
 
 window['dataStore'] = dataStore;

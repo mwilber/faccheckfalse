@@ -50,9 +50,20 @@
 </head>
 <body>
   <div class="container">
-		<gz-nav dataBind="state.activeList" bind-child="byref">
-			<div slot="then">
-				<h1>success</h1>
+		<gz-button dataBind="state.navigation" set-value="home" class="menu">Home</gz-button>
+		<gz-button dataBind="state.navigation" set-value="host" class="menu">Host</gz-button>
+		<gz-button dataBind="state.navigation" set-value="buzzer" class="menu">Buzzer</gz-button>
+		<gz-nav dataBind="state.navigation">
+			<div slot="default">
+				<h1>HOME:</h1>
+				<fcf-host dataBind="state.navigation"></fcf-host>
+				<fcf-join dataBind="state.navigation"></fcf-join>
+			</div>
+			<div slot="host">
+				<h1>HOST: <gz-label dataBind="state.activeList"></gz-label></h1>
+			</div>
+			<div slot="buzzer">
+				<h1>BUZZER: <gz-label dataBind="state.activeList"></gz-label></h1>
 			</div>
 		</gz-if>
 	</div>
